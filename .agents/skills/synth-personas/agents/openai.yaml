@@ -1,0 +1,16 @@
+interface:
+  display_name: "Synth Personas"
+  short_description:
+    "Generate panel-style feedback on a pitch/proposal artifact by fanning out
+    parallel LLM calls across a curated library of ~80 personas."
+  icon_small: "./assets/icon.svg"
+  icon_large: "./assets/icon.svg"
+  brand_color: "#7C3AED"
+  default_prompt:
+    "Drive synth-personas to generate panel feedback on the user's artifact:
+    discover available personas, propose a rubric, write and validate a task
+    YAML, run in dev-mode with --limit 3 first, then run the full evaluation
+    after the user confirms. Surface highlights from the resulting report.md."
+
+policy:
+  allow_implicit_invocation: true

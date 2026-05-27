@@ -1,0 +1,76 @@
+I'm going to show you {% if artifact.title %}**"{{ artifact.title }}"** — a {{ artifact.kind | replace("_", " ") }}{% else %}a {{ artifact.kind | replace("_", " ") }}{% endif %}. Read it, then give your reaction as {{ persona.name }}.
+
+# The artifact
+
+<<<ARTIFACT_START>>>
+{{ artifact.content }}
+<<<ARTIFACT_END>>>
+
+# Rubric you are scoring against
+{% for r in rubric -%}
+- **{{ r.name }}** ({{ r.scale[0] }}–{{ r.scale[1] }}): {{ r.description }}
+{% endfor %}
+{% if artifact.kind == "brand_names_batch" -%}
+# Scoring anchors — apply to every rubric
+
+Use the full scale. For a 1-10 rubric:
+
+- **1-2**: Actively bad. Would warn the founder away from this name on this dimension.
+- **3-4**: Below average. Real problems on this axis, even if not fatal.
+- **5-6**: Mid. Fine but undifferentiated. The honest default.
+- **7-8**: Strong. Real strengths, with known small reservations.
+- **9-10**: You'd actively recommend the name on this dimension. Save for names that genuinely click.
+
+Score must match rationale. If you list problems, the score is in the bottom half.
+{%- else %}
+# Scoring anchors — apply to every rubric
+
+Use the full scale. For a 1-10 rubric:
+
+- **1-2**: Fatally flawed on this dimension. You would not engage further on this axis.
+- **3-4**: Serious problems. Probably not viable as presented; would need substantial changes.
+- **5-6**: Plausible but undifferentiated. Most pitches you see live in this band. The "meh" zone.
+- **7-8**: Strong on this dimension, with known risks you can articulate.
+- **9-10**: Reserved. Among the best you have ever seen on this axis. If you can think of competing pitches that would beat this one on this axis, the score CANNOT be 9-10.
+
+For rubrics with smaller scales, compress proportionally — but never default to the upper half.
+
+**Specific anti-sycophancy reminders**:
+- If a pitch trades enormous complexity for marginal physical gains, technical_feasibility is 2-4.
+- If the team is "ex-Big Tech" or "former lab lead" without named first-of-kind achievements, team_credibility is 4-6.
+- A pitch can score high on "ambitious framing" but low on "moonshot quality" if the engineering tradeoff is bad. They are different things.
+- Your score must match your rationale. If your rationale lists problems, your score is in the bottom half.
+{%- endif %}
+
+{% if extra_questions %}
+# Additional questions to answer
+{% for q in extra_questions -%}
+- **{{ q.id }}**: {{ q.prompt }}
+{% endfor %}
+{% endif %}
+# Response format
+
+Respond with a single JSON object — no prose before or after, no markdown fences — matching this shape exactly:
+
+```
+{
+  "overall_take": "<2-4 sentences in your voice — your gut reaction>",
+  "scores": {
+    {% for r in rubric -%}
+    "{{ r.name }}": {
+      "score": <integer between {{ r.scale[0] }} and {{ r.scale[1] }}>,
+      "rationale": "<1-3 sentences in your voice explaining the score; rationale and score MUST be internally consistent>"
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  }{% if extra_questions %},
+  "answers": {
+    {% for q in extra_questions -%}
+    "{{ q.id }}": "<your answer in your voice>"{% if not loop.last %},{% endif %}
+    {% endfor %}
+  }{% endif %},
+  "memorable_quote": "<one sentence you would actually say about this, quotable>",
+  "confidence": "<low | medium | high>"
+}
+```
+
+Stay in character. Be specific. Score honestly. No flattery, no hedging. Now respond with the JSON only.

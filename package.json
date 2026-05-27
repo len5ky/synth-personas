@@ -1,0 +1,20 @@
+{
+  "name": "synth-personas",
+  "version": "0.2.1",
+  "private": true,
+  "type": "module",
+  "description": "Synthetic personas — Codex/Claude Code skills + TypeScript CLI for fan-out panel-style LLM feedback against ~80 curated personas.",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build -w @synth-personas/core && npm run build -w @synth-personas/cli",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "cli": "npm run --workspace @synth-personas/cli start --"
+  },
+  "engines": {
+    "node": ">=20.10"
+  }
+}

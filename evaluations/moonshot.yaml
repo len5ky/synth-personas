@@ -1,0 +1,66 @@
+# Example evaluation task — replace `artifact.path` with your real deck.
+name: "moonshot-2026"
+description: "Reactions from a cross-section of 81 personas to a moonshot innovation pitch."
+
+artifact:
+  path: "./moonshot-artifact.md"   # resolved relative to this YAML's directory
+  kind: "pitch_deck"
+  title: "Replace me with the deck's title"
+
+persona_selection:
+  categories:
+    - billionaires
+    - vcs
+    - media
+    - podcasters
+    - scientists
+    - public_intellectuals
+  tags_any: []
+  tags_all: []
+  include_slugs: []
+  exclude_slugs: []
+  limit: null
+  shuffle: false
+
+model:
+  default: "google/gemini-3-flash-preview"   # framework default; any OpenRouter model id; per-persona overrides via frontmatter
+  temperature: 0.7
+  max_tokens: 2000
+  reasoning:                                # optional; OpenRouter unified reasoning param
+    effort: "high"                          # "low" | "medium" | "high"
+
+rubric:
+  - name: "technical_feasibility"
+    description: "Is the underlying physics/engineering/biology plausible on the claimed timeline?"
+    scale: [1, 10]
+  - name: "market_or_impact_opportunity"
+    description: "If it works, is the addressable market or civilizational impact real and reachable?"
+    scale: [1, 10]
+  - name: "team_credibility"
+    description: "Does the team have the right scars and obsession for this?"
+    scale: [1, 10]
+  - name: "moonshot_quality"
+    description: "Is this a *good* moonshot — a genuinely 10× outcome with a coherent reason this particular approach is the right one? Ambition alone is not enough; trading enormous complexity for marginal gains is a BAD moonshot. Mere audacity in a wrong direction is low."
+    scale: [1, 10]
+  - name: "funding_readiness"
+    description: "Write a check / amplify today, in 6 months, or never?"
+    scale: [1, 10]
+
+extra_questions:
+  - id: "headline_objection"
+    prompt: "Your single biggest objection, in your own voice."
+  - id: "would_take_meeting"
+    prompt: "Would you take a 30-minute meeting with this team? Yes/No and why."
+  - id: "redirect_advice"
+    prompt: "If forced to back them, what would you tell them to change first?"
+
+runner:
+  concurrency: 10
+  retry_max_attempts: 5
+  timeout_seconds: 120
+
+output:
+  dir: "../runs"
+  keep_raw_responses: true
+  synthesis: true
+  synthesis_model: "anthropic/claude-opus-4.7"

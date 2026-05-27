@@ -1,0 +1,40 @@
+{
+  "name": "@synth-personas/cli",
+  "version": "0.2.1",
+  "description": "Command-line interface for the synth-personas evaluation engine. Ships the bundled persona library and Codex/Claude Code skill files.",
+  "type": "module",
+  "bin": {
+    "synth-personas": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "assets/personas",
+    "skills",
+    ".agents",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "start": "node --import tsx/esm src/index.ts",
+    "test": "vitest run",
+    "prepublishOnly": "npm run build",
+    "_comment_prepare": "Mirrors assets/personas, skills/, and .agents/skills/ from the repo root into this package dir so that `npm pack` ships them. The mirrored copies under packages/cli/{assets,skills,.agents}/ are gitignored — NEVER edit them, ALWAYS edit the canonical copies at the repo root. See scripts/prepack.mjs for details.",
+    "prepare": "node scripts/prepack.mjs"
+  },
+  "dependencies": {
+    "@synth-personas/core": "*",
+    "commander": "^12.1.0",
+    "dotenv": "^16.4.5",
+    "js-yaml": "^4.1.0",
+    "kleur": "^4.1.5",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^20.12.7",
+    "tsx": "^4.16.0",
+    "typescript": "^5.5.4",
+    "vitest": "^1.6.0"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "name": "@synth-personas/core",
+  "version": "0.2.1",
+  "description": "Synth-persona evaluation engine — fan-out LLM calls to a panel of persona profiles and aggregate structured feedback.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./templates": {
+      "import": "./src/templates/index.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "src/templates"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "gray-matter": "^4.0.3",
+    "js-yaml": "^4.1.0",
+    "nunjucks": "^3.2.4",
+    "p-limit": "^5.0.0",
+    "p-retry": "^6.2.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^20.12.7",
+    "@types/nunjucks": "^3.2.6",
+    "typescript": "^5.5.4",
+    "vitest": "^1.6.0"
+  }
+}
