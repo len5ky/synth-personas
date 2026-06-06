@@ -44,6 +44,17 @@ npm run cli -- run ./my-pitch.yaml --limit 3   # cheap dev pass first
 npm run cli -- run ./my-pitch.yaml             # full panel
 ```
 
+### Or install from npm (no clone)
+
+The CLI ships on npm as [`@sociosim/cli`](https://www.npmjs.com/package/@sociosim/cli) with the full persona library bundled — no clone required:
+
+```bash
+npm install -g @sociosim/cli
+synth-personas list-personas | head        # library is bundled, runs offline
+```
+
+You supply an `OPENROUTER_API_KEY` (a `.env` in the working dir, or an exported env var) plus a task YAML, then run `synth-personas run <task>.yaml`. See [Global install](#global-install--make-synth-personas-available-on-path) for the full workflow.
+
 That's all you need for the main use case. The rest of this README covers advanced flows.
 
 ---
