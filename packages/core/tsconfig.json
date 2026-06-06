@@ -4,8 +4,7 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "module": "ESNext",
-    "moduleResolution": "Bundler",
-    "composite": true
+    "moduleResolution": "Bundler"
   },
   "include": ["src/**/*"],
   "exclude": ["dist", "node_modules", "**/*.test.ts"]

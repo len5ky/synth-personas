@@ -7,6 +7,5 @@
     "moduleResolution": "Bundler"
   },
   "include": ["src/**/*"],
-  "exclude": ["dist", "node_modules", "**/*.test.ts"],
-  "references": [{ "path": "../core" }]
+  "exclude": ["dist", "node_modules", "**/*.test.ts"]
 }

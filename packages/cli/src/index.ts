@@ -19,8 +19,8 @@ import {
   renderUserPrompt,
   runEvaluation,
   selectPersonas,
-} from "@synth-personas/core";
-import type { EvaluationTask, Persona, PersonaResult, RubricItem } from "@synth-personas/core";
+} from "@len5ky/synth-personas-core";
+import type { EvaluationTask, Persona, PersonaResult, RubricItem } from "@len5ky/synth-personas-core";
 
 loadEnv();
 

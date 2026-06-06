@@ -1,5 +1,5 @@
 {
-  "name": "@synth-personas/cli",
+  "name": "@len5ky/synth-personas-cli",
   "version": "0.2.1",
   "description": "Command-line interface for the synth-personas evaluation engine. Ships the bundled persona library and Codex/Claude Code skill files.",
   "type": "module",
@@ -23,7 +23,7 @@
     "prepare": "node scripts/prepack.mjs"
   },
   "dependencies": {
-    "@synth-personas/core": "*",
+    "@len5ky/synth-personas-core": "*",
     "commander": "^12.1.0",
     "dotenv": "^16.4.5",
     "js-yaml": "^4.1.0",

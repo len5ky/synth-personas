@@ -16,7 +16,7 @@ A TypeScript CLI drives parallel persona-based feedback against an artifact. Per
 
 ## Prerequisites
 
-1. `synth-personas` binary on PATH (`npm i -g @synth-personas/cli` if not).
+1. `synth-personas` binary on PATH (`npm i -g @len5ky/synth-personas-cli` if not).
 2. `OPENROUTER_API_KEY` env var set (sign up at <https://openrouter.ai/>).
 
 If either is missing, surface it and stop — don't try to work around it.
