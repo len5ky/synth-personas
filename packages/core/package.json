@@ -1,5 +1,5 @@
 {
-  "name": "@len5ky/synth-personas-core",
+  "name": "@sociosim/core",
   "version": "0.2.1",
   "description": "Synth-persona evaluation engine — fan-out LLM calls to a panel of persona profiles and aggregate structured feedback.",
   "type": "module",
