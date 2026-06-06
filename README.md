@@ -46,10 +46,10 @@ npm run cli -- run ./my-pitch.yaml             # full panel
 
 ### Or install from npm (no clone)
 
-The CLI ships on npm as [`@sociosim/cli`](https://www.npmjs.com/package/@sociosim/cli) with the full persona library bundled — no clone required:
+The CLI ships on npm as [`@sociosim/synth-personas-cli`](https://www.npmjs.com/package/@sociosim/synth-personas-cli) with the full persona library bundled — no clone required:
 
 ```bash
-npm install -g @sociosim/cli
+npm install -g @sociosim/synth-personas-cli
 synth-personas list-personas | head        # library is bundled, runs offline
 ```
 
@@ -134,7 +134,7 @@ If you're not a developer and `mockinvestor.com` or the simple flows above cover
 If you'll use this from many directories (or want the CLI to install its own SKILL.md files into your Claude Code / Codex skill dirs):
 
 ```bash
-npm install -g @sociosim/cli
+npm install -g @sociosim/synth-personas-cli
 synth-personas install-skills        # drops skills into ~/.claude/skills/ and ~/.codex/skills/
 ```
 
@@ -187,7 +187,7 @@ synth-personas list-personas --personas-root ./my-personas/
 
 ## Skills (Claude Code + Codex CLI)
 
-After `npm install -g @sociosim/cli && synth-personas install-skills`, two skills become available in both Claude Code and Codex CLI:
+After `npm install -g @sociosim/synth-personas-cli && synth-personas install-skills`, two skills become available in both Claude Code and Codex CLI:
 
 - **`synth-personas`** — drives the CLI to generate panel feedback. Auto-triggers on prompts like *"give me a panel reaction on this pitch from VCs"* or *"what would Musk think of this?"* (across many personas).
 - **`create-persona`** — walks you through authoring a new persona end-to-end: picks the slot, researches from primary 2024-2026 sources, writes the 9-section body with traceable verbatim quotes, validates, updates the index. Trigger with *"add a persona for &lt;name&gt;"*.
@@ -209,8 +209,8 @@ The `create-persona` skill above is the recommended path. By hand:
 ```
 .
 ├── packages/
-│   ├── core/                       # @sociosim/core — evaluation engine
-│   └── cli/                        # @sociosim/cli — TS CLI
+│   ├── core/                       # @sociosim/synth-personas-core — evaluation engine
+│   └── cli/                        # @sociosim/synth-personas-cli — TS CLI
 │       └── scripts/prepack.mjs     # mirrors personas + skills into the package at pack time
 ├── skills/
 │   ├── synth-personas/             # Claude Code skill: panel feedback

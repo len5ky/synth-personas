@@ -9,10 +9,10 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "npm run build -w @sociosim/core && npm run build -w @sociosim/cli",
+    "build": "npm run build -w @sociosim/synth-personas-core && npm run build -w @sociosim/synth-personas-cli",
     "typecheck": "npm run typecheck --workspaces --if-present",
     "test": "npm run test --workspaces --if-present",
-    "cli": "npm run --workspace @sociosim/cli start --"
+    "cli": "npm run --workspace @sociosim/synth-personas-cli start --"
   },
   "engines": {
     "node": ">=20.10"

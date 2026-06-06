@@ -19,8 +19,8 @@ import {
   renderUserPrompt,
   runEvaluation,
   selectPersonas,
-} from "@sociosim/core";
-import type { EvaluationTask, Persona, PersonaResult, RubricItem } from "@sociosim/core";
+} from "@sociosim/synth-personas-core";
+import type { EvaluationTask, Persona, PersonaResult, RubricItem } from "@sociosim/synth-personas-core";
 
 loadEnv();
 

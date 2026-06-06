@@ -41,7 +41,7 @@ export OPENROUTER_API_KEY=...
 ```
 
 The `synth-personas` binary should already be on PATH (installed globally via
-`npm i -g @sociosim/cli`). If not, install it before continuing.
+`npm i -g @sociosim/synth-personas-cli`). If not, install it before continuing.
 
 ## Workflow
 
